@@ -8,11 +8,11 @@ import * as serviceWorker from './serviceWorker';
 import store from './Redux';
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Provider store={ store }>
       <App />
-    </BrowserRouter>
-  </Provider>, document.getElementById('root'),
+    </Provider>
+  </BrowserRouter>, document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

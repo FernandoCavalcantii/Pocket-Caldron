@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-
-const placeHolder = () => 'Hello World';
+import loginReducer from './loginReducer';
 
 const rootReducer = combineReducers({
-  placeHolder,
+  loginReducer,
 });
 
 export default rootReducer;

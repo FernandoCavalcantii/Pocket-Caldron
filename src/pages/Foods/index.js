@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/Header';
 
 const Foods = () => (
-  <Header />
+  <Header pageName="Foods" searchEnable />
 );
 
 export default Foods;

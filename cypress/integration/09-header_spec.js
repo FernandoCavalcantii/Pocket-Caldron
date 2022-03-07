@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe.only('9 - Implemente os elementos do header na tela principal de receitas, respeitando os atributos descritos no protótipo', () => {
+describe('9 - Implemente os elementos do header na tela principal de receitas, respeitando os atributos descritos no protótipo', () => {
   it('Tem os data-testids profile-top-btn, page-title e search-top-btn', () => {
     cy.visit('http://localhost:3000/foods');
 
@@ -130,7 +130,7 @@ describe('10 - Implemente um ícone para a tela de perfil, um título e um ícon
   });
 });
 
-describe('11 - Redirecione a pessoa usuária para a tela de perfil ao clicar no botão de perfil', () => {
+describe.only('11 - Redirecione a pessoa usuária para a tela de perfil ao clicar no botão de perfil', () => {
   it('A mudança de tela ocorre corretamente', () => {
     cy.visit('http://localhost:3000/foods');
 
