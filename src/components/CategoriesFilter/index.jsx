@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getDrinksCategories, getFoodsCategories } from '../../services/api';
 
-function CategoriesFilter({setCategory}) {
+function CategoriesFilter({ setCategory }) {
   const [categories, setCategories] = useState();
   const { pathname } = useLocation();
 
@@ -27,25 +28,31 @@ function CategoriesFilter({setCategory}) {
 
   return (
     <div>
-      <button type="button"
-        onClick={() => setCategory("all")}
+      <button
+        type="button"
+        onClick={ () => setCategory('all') }
       >
         All
       </button>
-      {categories?.map((category, index) => (
+      {categories?.map(({ strCategory }, index) => (
         index < Number('5') && (
           <button
             key={ index }
             type="button"
-            data-testid={ `${category.strCategory}-category-filter` }
-            onClick={() => setCategory(category.strCategory)}
+            data-testid={ strCategory.concat('-category-filter') }
+            onClick={ () => setCategory(strCategory) }
           >
-            {category.strCategory}
+            {strCategory}
           </button>
         )
       ))}
     </div>
+    // `${strCategory + "-category-filter"}`
   );
 }
+
+CategoriesFilter.propTypes = {
+  setCategory: PropTypes.func,
+}.isRequired;
 
 export default CategoriesFilter;
