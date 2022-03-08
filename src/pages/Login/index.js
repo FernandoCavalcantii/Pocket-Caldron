@@ -11,23 +11,22 @@ const Login = ({ dispatch }) => {
   const [redirect, setRedirect] = useState(false);
   const passwordLength = 7;
 
-  const emailCheck = () => {
-    const regex = /\S+@\S+\.\S+/i;
-    if (String(email).match(regex)) {
-      return true;
-    }
-    return false;
-  };
-
-  const enableButton = () => {
-    if (password.length >= passwordLength && emailCheck()) {
-      setDisableBtn(false);
-    } else {
-      setDisableBtn(true);
-    }
-  };
-
   useEffect(() => {
+    const emailCheck = () => {
+      const regex = /\S+@\S+\.\S+/i;
+      if (String(email).match(regex)) {
+        return true;
+      }
+      return false;
+    };
+
+    const enableButton = () => {
+      if (password.length >= passwordLength && emailCheck()) {
+        setDisableBtn(false);
+      } else {
+        setDisableBtn(true);
+      }
+    };
     enableButton();
   }, [email, password]);
 
