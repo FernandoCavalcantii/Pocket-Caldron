@@ -1,20 +1,27 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
+import searchStatus from '../../Redux/actions/searchInputActions';
 
-export default function Header({ pageName, searchEnable }) {
-  const searchBtn = (
-    <button data-testid="search-top-btn" type="button">
-      <img src={ searchIcon } alt="search-icon" />
-      ;
-    </button>
-  );
+const Header = ({ pageName, searchEnable, dispatch }) => {
   const history = useHistory();
   function toProfile() {
     history.push('/profile');
   }
+
+  const handleInput = () => {
+    dispatch(searchStatus());
+  };
+
+  const searchBtn = (
+    <button onClick={ handleInput } data-testid="search-top-btn" type="button">
+      <img src={ searchIcon } alt="search-icon" />
+      ;
+    </button>
+  );
   return (
     <header>
       <button onClick={ toProfile } data-testid="profile-top-btn" type="button">
@@ -23,12 +30,19 @@ export default function Header({ pageName, searchEnable }) {
       <h1 data-testid="page-title">
         { pageName }
       </h1>
-      { searchEnable ? searchBtn : undefined }
+      { searchEnable && searchBtn }
     </header>
   );
-}
+};
 
 Header.propTypes = {
-  pageName: PropTypes.func.isRequired,
-  searchEnable: PropTypes.bool.isRequired,
+  pageName: PropTypes.string.isRequired,
+  searchEnable: PropTypes.bool,
+  dispatch: PropTypes.func.isRequired,
 };
+
+Header.defaultProps = {
+  searchEnable: false,
+};
+
+export default connect()(Header);
