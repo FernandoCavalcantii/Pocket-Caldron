@@ -17,7 +17,11 @@ const Header = ({ pageName, searchEnable }) => {
   };
 
   const searchBtn = (
-    <button onClick={ handleInput } data-testid="search-top-btn" type="button">
+    <button
+      onClick={ handleInput }
+      data-testid="search-top-btn"
+      type="button"
+    >
       <img src={ searchIcon } alt="search-icon" />
       ;
     </button>
