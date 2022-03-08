@@ -1,12 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header';
-import SearchInput from '../../components/SearchInput';
 
 const Foods = () => (
-  <>
-    <Header pageName="Foods" searchEnable />
-    <SearchInput />
-  </>
+  <Header pageName="Foods" searchEnable />
 );
 
 export default Foods;

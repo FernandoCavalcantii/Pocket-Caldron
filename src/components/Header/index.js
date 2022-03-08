@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
-import searchStatus from '../../Redux/actions/searchInputActions';
+import SearchInput from '../SearchInput';
 
 const Header = ({ pageName, searchEnable }) => {
-  const dispatch = useDispatch();
+  const [inputStatus, setInputStatus] = useState(false);
   const history = useHistory();
   function toProfile() {
     history.push('/profile');
   }
 
   const handleInput = () => {
-    dispatch(searchStatus());
+    setInputStatus(!inputStatus);
   };
 
   const searchBtn = (
@@ -25,13 +24,18 @@ const Header = ({ pageName, searchEnable }) => {
   );
   return (
     <header>
-      <button onClick={ toProfile } data-testid="profile-top-btn" type="button">
-        <img src={ profileIcon } alt="profile-icon" />
-      </button>
-      <h1 data-testid="page-title">
-        { pageName }
-      </h1>
-      { searchEnable && searchBtn }
+      <div>
+        <button onClick={ toProfile } data-testid="profile-top-btn" type="button">
+          <img src={ profileIcon } alt="profile-icon" />
+        </button>
+        <h1 data-testid="page-title">
+          { pageName }
+        </h1>
+        { searchEnable && searchBtn }
+      </div>
+      <div>
+        { inputStatus && <SearchInput /> }
+      </div>
     </header>
   );
 };
