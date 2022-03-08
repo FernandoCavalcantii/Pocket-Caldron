@@ -1,12 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import searchStatus from '../../Redux/actions/searchInputActions';
 
-const Header = ({ pageName, searchEnable, dispatch }) => {
+const Header = ({ pageName, searchEnable }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   function toProfile() {
     history.push('/profile');
@@ -38,11 +39,10 @@ const Header = ({ pageName, searchEnable, dispatch }) => {
 Header.propTypes = {
   pageName: PropTypes.string.isRequired,
   searchEnable: PropTypes.bool,
-  dispatch: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
   searchEnable: false,
 };
 
-export default connect()(Header);
+export default Header;
