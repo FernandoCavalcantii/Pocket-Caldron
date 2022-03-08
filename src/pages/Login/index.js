@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import saveLogin from '../../Redux/actions/loginActions';
 
-const Login = ({ dispatch }) => {
+const Login = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disableBtn, setDisableBtn] = useState(true);
@@ -77,8 +77,4 @@ const Login = ({ dispatch }) => {
   );
 };
 
-Login.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
-export default connect()(Login);
+export default Login;

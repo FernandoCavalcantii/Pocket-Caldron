@@ -1,0 +1,8 @@
+.recipeCard {
+  background-color: tomato;
+  width: 100px;
+}
+
+.recipeCard img {
+  width: 100%;
+}
