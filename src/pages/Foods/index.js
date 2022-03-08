@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import CategoriesFilter from '../../components/CategoriesFilter';
 import RecipeCard from '../../components/RecipeCard';
-import { getFoodsCategories, getFoodsRecipes } from '../../services/api';
+import { getFoodsCategories, getFoodsRecipes,
+  getFoodsByCategory } from '../../services/api';
+
 import style from './style.module.css';
 import Header from '../../components/Header';
 
 const Foods = () => {
   const [foods, setFoods] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const fetchFoods = async () => {
     const res = await getFoodsRecipes();
     setFoods(res.meals);
   };
 
-  const setCategory = (category) => {
-    if (category === 'all') {
-      console.log('hoi');
+  const setCategory = async (category) => {
+    if (category === 'all' || selectedCategory === category) {
+      fetchFoods();
+    } else {
+      const res = await getFoodsByCategory(category);
+      setFoods(res.meals);
+      setSelectedCategory(category);
     }
   };
 
@@ -37,6 +44,7 @@ const Foods = () => {
                 key={ food.strMeal }
                 name={ food.strMeal }
                 thumb={ food.strMealThumb }
+                recipeId={ food.idMeal }
               />
             );
           }

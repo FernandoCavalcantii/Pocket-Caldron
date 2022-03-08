@@ -1,26 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Link, useLocation } from 'react-router-dom';
 import style from './style.module.css';
 
 function RecipeCard(props) {
-  const { name, thumb, testIdIndex } = props;
+  const { name, thumb, testIdIndex, recipeId } = props;
+  const location = useLocation();
   return (
-    <div
-      className={ style.recipeCard }
-      data-testid={ `${testIdIndex}-recipe-card` }
-    >
-      <img
-        src={ thumb }
-        alt={ name }
-        data-testid={ `${testIdIndex}-card-img` }
-      />
-      <span
-        data-testid={ `${testIdIndex}-card-name` }
+    <Link to={ `${location.pathname}/${recipeId}` }>
+      <div
+        className={ style.recipeCard }
+        data-testid={ `${testIdIndex}-recipe-card` }
       >
-        {name}
-      </span>
-    </div>
+        <img
+          src={ thumb }
+          alt={ name }
+          data-testid={ `${testIdIndex}-card-img` }
+        />
+        <span
+          data-testid={ `${testIdIndex}-card-name` }
+        >
+          {name}
+        </span>
+      </div>
+    </Link>
+
   );
 }
 

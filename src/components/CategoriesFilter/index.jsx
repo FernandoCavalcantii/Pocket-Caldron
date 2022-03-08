@@ -31,6 +31,7 @@ function CategoriesFilter({ setCategory }) {
       <button
         type="button"
         onClick={ () => setCategory('all') }
+        data-testid="All-category-filter"
       >
         All
       </button>

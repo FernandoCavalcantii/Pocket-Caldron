@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import CategoriesFilter from '../../components/CategoriesFilter';
 import RecipeCard from '../../components/RecipeCard';
-import { getDrinksRecipes } from '../../services/api';
+import { getDrinksByCategory, getDrinksRecipes } from '../../services/api';
+
 import style from './style.module.css';
 import Header from '../../components/Header';
 
 const Drinks = () => {
   const [drinks, setDrinks] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const fetchDrinks = async () => {
     const res = await getDrinksRecipes();
     setDrinks(res.drinks);
+  };
+
+  const setCategory = async (category) => {
+    if (category === 'all' || selectedCategory === category) {
+      fetchDrinks();
+    } else {
+      const res = await getDrinksByCategory(category);
+      setDrinks(res.drinks);
+      setSelectedCategory(category);
+    }
   };
 
   useEffect(() => {
@@ -20,7 +32,7 @@ const Drinks = () => {
   return (
     <>
       <Header searchEnable pageName="Drinks" />
-      <CategoriesFilter />
+      <CategoriesFilter setCategory={ setCategory } />
       <section className={ style.recipesContainer }>
         {drinks?.map((drink, index) => {
           if (index < Number('12')) {
@@ -30,6 +42,7 @@ const Drinks = () => {
                 key={ drink.strDrink }
                 name={ drink.strDrink }
                 thumb={ drink.strDrinkThumb }
+                recipeId={ drink.idDrink }
               />
             );
           }

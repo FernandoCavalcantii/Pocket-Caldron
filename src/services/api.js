@@ -27,14 +27,14 @@ export const getDrinksCategories = async () => {
 };
 
 export const getFoodsByCategory = async (category) => {
-  const URL = `www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+  const URL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
   const res = await fetch(URL);
   const foods = await res.json();
   return foods;
 };
 
 export const getDrinksByCategory = async (category) => {
-  const URL = `www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
+  const URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
   const res = await fetch(URL);
   const drink = await res.json();
   return drink;
