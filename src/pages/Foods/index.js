@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CategoriesFilter from '../../components/CategoriesFilter';
 import RecipeCard from '../../components/RecipeCard';
@@ -14,6 +14,13 @@ const Foods = () => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState('');
 
+  const fetchFoods = useCallback(
+    async () => {
+      const res = await getFoodsRecipes();
+      dispatch(setFoods(res.meals));
+    }, [dispatch],
+  );
+
   const setCategory = async (category) => {
     if (category === 'all' || selectedCategory === category) {
       fetchFoods();
@@ -25,13 +32,9 @@ const Foods = () => {
   };
 
   useEffect(() => {
-    const fetchFoods = async () => {
-      const res = await getFoodsRecipes();
-      dispatch(setFoods(res.meals));
-    };
-    fetchFoods();
     getFoodsCategories();
-  }, [dispatch]);
+    fetchFoods();
+  }, [fetchFoods]);
 
   return (
     <>
