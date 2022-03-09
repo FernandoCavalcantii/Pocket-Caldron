@@ -39,3 +39,45 @@ export const getDrinksByCategory = async (category) => {
   const drink = await res.json();
   return drink;
 };
+
+export const getFoodsByIngredients = async (ingredient) => {
+  const URL = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  const res = await fetch(URL);
+  const data = await res.json();
+  return data;
+};
+
+export const getFoodsByName = async (name) => {
+  const URL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
+  const res = await fetch(URL);
+  const data = await res.json();
+  return data;
+};
+
+export const getFoodsByFirstLetter = async (letter) => {
+  const URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;
+  const res = await fetch(URL);
+  const data = await res.json();
+  return data;
+};
+
+export const getDrinksByIngredients = async (ingredient) => {
+  const URL = `www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  const res = await fetch(URL);
+  const data = await res.json();
+  return data;
+};
+
+export const getDrinksByName = async (name) => {
+  const URL = `www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
+  const res = await fetch(URL);
+  const data = await res.json();
+  return data;
+};
+
+export const getDrinksByFirstLetter = async (letter) => {
+  const URL = `www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`;
+  const res = await fetch(URL);
+  const data = await res.json();
+  return data;
+};
