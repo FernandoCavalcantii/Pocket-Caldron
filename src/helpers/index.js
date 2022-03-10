@@ -35,7 +35,7 @@ export const isRecipeCompleted = (id) => {
 
 export const isInProgressRecipe = (id, type) => {
   const inProgressRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (inProgressRecipe[type]) {
+  if (inProgressRecipe && inProgressRecipe[type][id]) {
     return true;
   }
   return false;
