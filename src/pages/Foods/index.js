@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CategoriesFilter from '../../components/CategoriesFilter';
 import RecipeCard from '../../components/RecipeCard';
+import Footer from '../../components/Footer';
 import { getFoodsCategories, getFoodsRecipes,
   getFoodsByCategory } from '../../services/api';
 
@@ -51,6 +52,7 @@ const Foods = () => {
           return false;
         })}
       </section>
+      <Footer />
     </>
   );
 };
