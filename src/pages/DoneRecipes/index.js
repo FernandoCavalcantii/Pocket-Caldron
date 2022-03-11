@@ -7,34 +7,34 @@ import Header from '../../components/Header';
 
 const DoneRecipes = () => {
   // const { doneRecipes } = JSON.parse(localStorage.getItem('doneRecipes')).doneRecipes;
-  const [doneRecipes, setDoneRecipes] = useState([]);
+  const [renderDoneRecipes, setRenderDoneRecipes] = useState([]);
   const getMock = () => {
     const mock = doneRecipesMock();
-    setDoneRecipes(mock);
+    setRenderDoneRecipes(mock);
   };
   useEffect(
     () => {
       getMock();
     }, [],
   );
-  // doneRecipes correto, linha 8. Após as páginas anteriores estarem concluidas, apagar linha 10 até 18
+  // doneRecipes correto, linha 8. Após as páginas anteriores estarem concluidas, apagar linha 10 até 18 e 22
   const handleClick = ({ target }) => {
     const mock = doneRecipesMock();
     switch (target.innerText) {
     case 'All':
       // Apagar linha 25, correta é a 26
-      setDoneRecipes(mock);
-      // setDoneRecipes(doneRecipes);
+      setRenderDoneRecipes(mock);
+      // setRenderDoneRecipes(doneRecipes);
       break;
     case 'Food':
       // Apagar linha 30, correta é a 31
-      setDoneRecipes(mock.filter((recipe) => recipe.type === 'comida'));
-      // setDoneRecipes(doneRecipes.filter((recipe) => recipe.type === 'comida'));
+      setRenderDoneRecipes(mock.filter((recipe) => recipe.type === 'comida'));
+      // setRenderDoneRecipes(doneRecipes.filter((recipe) => recipe.type === 'comida'));
       break;
     default:
       // Apagar linha 35, correta é a 36
-      setDoneRecipes(mock.filter((recipe) => recipe.type === 'bebida'));
-      // setDoneRecipes(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
+      setRenderDoneRecipes(mock.filter((recipe) => recipe.type === 'bebida'));
+      // setRenderDoneRecipes(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
     }
   };
   return (
@@ -62,7 +62,7 @@ const DoneRecipes = () => {
         Drinks
       </button>
       <section className={ style.doneRecipesContainer }>
-        {doneRecipes?.map((recipe, index) => (
+        {renderDoneRecipes?.map((recipe, index) => (
           <DoneRecipeCard
             key={ recipe.name }
             index={ index }
