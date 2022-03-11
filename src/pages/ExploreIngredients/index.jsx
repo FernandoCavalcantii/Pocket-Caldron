@@ -1,9 +1,13 @@
 import React from 'react';
+import Footer from '../../components/Footer';
 // import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 
 const ExploreIngredients = () => (
-  <Header pageName="Explore Ingredients" />
+  <div>
+    <Header pageName="Explore Ingredients" />
+    <Footer />
+  </div>
 );
 
 // ExploreIngredients.propTypes = {
