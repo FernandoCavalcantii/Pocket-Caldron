@@ -1,0 +1,17 @@
+.doneRecipeCard {
+    background-color: tomato;
+    width: 100px;
+  }
+  
+  .doneRecipeCard img {
+    width: 100%;
+  }
+
+  .doneRecipeCard button {
+    width: 100%;
+  }
+
+  .doneRecipeCard a {
+    text-decoration: none;
+    color: black;
+  }
