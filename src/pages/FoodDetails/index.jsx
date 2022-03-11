@@ -1,21 +1,27 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { getFoodById, getDrinksRecipes } from '../../services/api';
 
 import shareIcon from '../../images/shareIcon.svg';
 import whiteIcon from '../../images/whiteHeartIcon.svg';
+import blackIcon from '../../images/blackHeartIcon.svg';
 import getIngredientsAndMeasures, {
-  isRecipeCompleted, isInProgressRecipe } from '../../helpers';
+  isRecipeCompleted, isInProgressRecipe,
+  isRecipeFavorited,
+  toggleFavoriteRecipe } from '../../helpers';
 
 import Carousel from '../../components/Carousel';
 
 const Details = () => {
   const { pathname } = useLocation();
+  const history = useHistory();
   const [recipe, setRecipe] = useState([]);
   const [IngredientsdAndMeasures, setIngredientsAndMeasures] = useState([]);
   const [recomendation, setRecomendation] = useState([]);
   const [isCompleted, setIsCompleted] = useState([false]);
   const [isInProgress, setIsInProgress] = useState([false]);
+  const [showLinkCopied, setShowLinkCopied] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
 
   const getFood = useCallback(
     async () => {
@@ -38,10 +44,11 @@ const Details = () => {
     getRecomendation();
     setIsCompleted(isRecipeCompleted(pathname.split('/')[2]));
     setIsInProgress(isInProgressRecipe(pathname.split('/')[2], 'meals'));
+    setIsFavorited(isRecipeFavorited(pathname.split('/')[2]));
   }, [getFood, getRecomendation, pathname]);
 
   return (
-    recipe.map((food) => (
+    recipe?.map((food) => (
       <section key={ food.idMeal }>
         <img
           src={ food.strMealThumb }
@@ -54,8 +61,54 @@ const Details = () => {
             <span data-testid="recipe-category">{food.strCategory}</span>
           </aside>
           <div>
-            <img src={ shareIcon } alt="share" data-testid="share-btn" />
-            <img src={ whiteIcon } alt="favorite" data-testid="favorite-btn" />
+            <button
+              type="button"
+              onClick={ () => {
+                navigator.clipboard.writeText('http://localhost:3000/foods/'.concat(food.idMeal));
+                setShowLinkCopied(true);
+                setTimeout(() => {
+                  setShowLinkCopied(false);
+                }, [Number('1000')]);
+              } }
+            >
+              <img
+                src={ shareIcon }
+                alt="share"
+                data-testid="share-btn"
+              />
+            </button>
+            {showLinkCopied && (
+              <p
+                style={ { position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  right: '0',
+                  margin: 'auto' } }
+              >
+                Link copied!
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={ () => {
+                toggleFavoriteRecipe(isFavorited, {
+                  id: food.idMeal,
+                  type: 'food',
+                  nationality: food.strArea,
+                  category: food.strCategory,
+                  alcoholicOrNot: '',
+                  name: food.strMeal,
+                  image: food.strMealThumb,
+                });
+                setIsFavorited(!isFavorited);
+              } }
+            >
+              <img
+                data-testid="favorite-btn"
+                src={ isFavorited ? blackIcon : whiteIcon }
+                alt="favorite"
+              />
+            </button>
           </div>
         </div>
         <main>
@@ -64,7 +117,7 @@ const Details = () => {
             {IngredientsdAndMeasures.map((value, index) => (
               <li
                 key={ Math.random() }
-                data-testid={ `${index}-ingredient-name-and-measure` }
+                data-testid={ String(index).concat('-ingredient-name-and-measure') }
               >
                 {value.ingredient}
                 -
@@ -90,6 +143,8 @@ const Details = () => {
               type="button"
               data-testid="start-recipe-btn"
               style={ { position: 'fixed', bottom: 0 } }
+              onClick={ () => history.push('/foods/'
+                .concat(String(food.idMeal), '/in-progress')) }
             >
               {isInProgress ? 'Continue Recipe' : 'Start recipe'}
             </button>

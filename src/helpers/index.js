@@ -40,3 +40,44 @@ export const isInProgressRecipe = (id, type) => {
   }
   return false;
 };
+
+export const isRecipeFavorited = (id) => {
+  const recipe = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (recipe) {
+    return recipe.some((acc) => acc.id === id);
+  }
+  return false;
+};
+
+export const toggleFavoriteRecipe = (isFavorited, {
+  id, type, nationality, category, alcoholicOrNot, name, image }) => {
+  const favoriteds = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (!favoriteds) {
+    const newFavoriteds = [{
+      id,
+      type,
+      nationality,
+      category,
+      alcoholicOrNot,
+      name,
+      image,
+    }];
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteds));
+    return false;
+  }
+  if (isFavorited) {
+    const newFavoriteds = favoriteds.filter((acc) => acc.id !== id);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteds));
+  } else {
+    const newFavoriteds = [...favoriteds, {
+      id,
+      type,
+      nationality,
+      category,
+      alcoholicOrNot,
+      name,
+      image,
+    }];
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteds));
+  }
+};
