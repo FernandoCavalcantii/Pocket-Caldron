@@ -8,22 +8,15 @@ import SearchInput from '../SearchInput';
 const Header = ({ pageName, searchEnable }) => {
   const [inputStatus, setInputStatus] = useState(false);
   const history = useHistory();
-  function toProfile() {
-    history.push('/profile');
-  }
-
-  const handleInput = () => {
-    setInputStatus(!inputStatus);
-  };
 
   const searchBtn = (
     <button
-      onClick={ handleInput }
+      onClick={ () => setInputStatus(!inputStatus) }
       type="button"
     >
       <img
-        src={ searchIcon }
         data-testid="search-top-btn"
+        src={ searchIcon }
         alt="search-icon"
       />
       ;
@@ -32,8 +25,15 @@ const Header = ({ pageName, searchEnable }) => {
   return (
     <header>
       <div>
-        <button onClick={ toProfile } type="button">
-          <img src={ profileIcon } data-testid="profile-top-btn" alt="profile-icon" />
+        <button
+          onClick={ () => history.push('/profile') }
+          type="button"
+        >
+          <img
+            src={ profileIcon }
+            data-testid="profile-top-btn"
+            alt="profile-icon"
+          />
         </button>
         <h1 data-testid="page-title">
           { pageName }

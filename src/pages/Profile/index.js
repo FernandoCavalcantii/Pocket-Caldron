@@ -7,7 +7,7 @@ export default function Profile() {
   const [email, setEmail] = useState('');
   useEffect(() => {
     const userEmail = JSON.parse(localStorage.getItem('user'));
-    setEmail(userEmail?.email);
+    setEmail(userEmail);
   }, []);
 
   return (
