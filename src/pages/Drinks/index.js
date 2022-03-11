@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CategoriesFilter from '../../components/CategoriesFilter';
 import RecipeCard from '../../components/RecipeCard';
 import { getDrinksByCategory, getDrinksRecipes } from '../../services/api';
+import Footer from '../../components/Footer';
 
 import style from './style.module.css';
 import Header from '../../components/Header';
@@ -63,6 +64,7 @@ const Drinks = () => {
           return false;
         })}
       </section>
+      <Footer />
     </>
 
   );

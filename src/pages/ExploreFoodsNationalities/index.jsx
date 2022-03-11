@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
 const ExploreFoodsNationalities = () => (
-  <Header pageName="Explore Nationalities" searchEnable />
+  <div>
+    <Header pageName="Explore Nationalities" searchEnable />
+    <Footer />
+  </div>
 );
 
 export default ExploreFoodsNationalities;
