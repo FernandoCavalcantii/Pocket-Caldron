@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import doneRecipesMock from './doneRecipesMock';
 import DoneRecipeCard from '../../components/DoneRecipeCard';
 import style from './style.module.css';
+import Header from '../../components/Header';
 // após páginas concluidas, apagar import mock linha 2
 
 const DoneRecipes = () => {
@@ -38,6 +39,7 @@ const DoneRecipes = () => {
   };
   return (
     <>
+      <Header pageName="Done Recipes" />
       <button
         data-testid="filter-by-all-btn"
         type="button"
