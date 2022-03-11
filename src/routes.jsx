@@ -5,6 +5,9 @@ import Login from './pages/Login';
 import Foods from './pages/Foods';
 import Drinks from './pages/Drinks';
 import Profile from './pages/Profile';
+import FoodDetails from './pages/FoodDetails';
+import DrinkDetails from './pages/DrinkDetails';
+import RecipeInProgress from './pages/RecipeInProgress';
 import DoneRecipes from './pages/DoneRecipes';
 
 const Routes = () => (
@@ -13,8 +16,13 @@ const Routes = () => (
     <Route exact path="/foods" component={ Foods } />
     <Route exact path="/drinks" component={ Drinks } />
     <Route exact path="/profile" component={ Profile } />
-    {/* <Route exact path="/foods:id" component={ Foods } />
-    <Route exact path="/drinks:id" component={ Drinks } /> */}
+
+    <Route exact path="/foods/:id" component={ FoodDetails } />
+    <Route exact path="/drinks/:id" component={ DrinkDetails } />
+    <Route exact path="/foods:id" component={ Foods } />
+    <Route exact path="/drinks:id" component={ Drinks } />
+    <Route exact path="/foods/:id/in-progress" component={ RecipeInProgress } />
+    <Route exact path="/drinks/:id/in-progress" component={ RecipeInProgress } />
     <Route exact path="/done-recipes" component={ DoneRecipes } />
   </Switch>
 );

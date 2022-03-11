@@ -19,18 +19,21 @@ const Header = ({ pageName, searchEnable }) => {
   const searchBtn = (
     <button
       onClick={ handleInput }
-      data-testid="search-top-btn"
       type="button"
     >
-      <img src={ searchIcon } alt="search-icon" />
+      <img
+        src={ searchIcon }
+        data-testid="search-top-btn"
+        alt="search-icon"
+      />
       ;
     </button>
   );
   return (
     <header>
       <div>
-        <button onClick={ toProfile } data-testid="profile-top-btn" type="button">
-          <img src={ profileIcon } alt="profile-icon" />
+        <button onClick={ toProfile } type="button">
+          <img src={ profileIcon } data-testid="profile-top-btn" alt="profile-icon" />
         </button>
         <h1 data-testid="page-title">
           { pageName }
