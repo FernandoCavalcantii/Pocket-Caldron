@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CategoriesFilter from '../../components/CategoriesFilter';
 import RecipeCard from '../../components/RecipeCard';
@@ -10,6 +11,7 @@ import Header from '../../components/Header';
 import setFoods from '../../Redux/actions/foodsActions';
 
 const Foods = () => {
+  const history = useHistory();
   const foods = useSelector((state) => state.foodsReducer.foods);
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -31,16 +33,22 @@ const Foods = () => {
     }
   };
 
+  const historyPush = () => {
+    const copy = [...foods];
+    const id = copy[0].idMeal;
+    history.push(`/foods/${id}`);
+  };
+
   useEffect(() => {
     getFoodsCategories();
     fetchFoods();
   }, [fetchFoods]);
-
   return (
     <>
       <Header searchEnable pageName="Foods" />
       <CategoriesFilter setCategory={ setCategory } />
       <section className={ style.recipesContainer }>
+        { foods && foods.length === 1 && historyPush() }
         {foods?.map((food, index) => {
           if (index < Number('12')) {
             return (

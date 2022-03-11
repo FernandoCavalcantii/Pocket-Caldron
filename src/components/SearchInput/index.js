@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getFoodsByName,
-  getFoodsByIngredients, getFoodsByFirstLetter } from '../../services/api';
+  getFoodsByIngredients,
+  getFoodsByFirstLetter,
+  getDrinksByName,
+  getDrinksByFirstLetter,
+  getDrinksByIngredients,
+} from '../../services/api';
 import setFoods from '../../Redux/actions/foodsActions';
+import setDrinks from '../../Redux/actions/drinksActions';
 
 export default function SearchInput() {
+  const ERROR = 'Sorry, we haven\'t found any recipes for these filters.';
+  const { pathname } = useLocation();
   const [radio, setRadio] = useState('');
   const [textInput, setTextInput] = useState('');
   const dispatch = useDispatch();
@@ -15,28 +24,74 @@ export default function SearchInput() {
     setTextInput(target.value);
   };
 
-  const handleClick = async () => {
-    const foodsByName = await getFoodsByName(textInput);
-    let foodsByLetter = '';
-    if (textInput.length === 1) {
-      foodsByLetter = await getFoodsByFirstLetter(textInput);
+  const getByIngredients = async () => {
+    if (pathname === '/foods') {
+      const foodsI = await getFoodsByIngredients(textInput);
+      if (foodsI.meals === null) {
+        global.alert(ERROR);
+      }
+      dispatch(setFoods(foodsI.meals));
     }
-    const foodsByIngredients = await getFoodsByIngredients(textInput);
-    switch (radio) {
-    case 'Ingredients':
-      dispatch(setFoods(foodsByIngredients.meals));
-      break;
-    case 'Name':
-      dispatch(setFoods(foodsByName.meals));
-      break;
-    default:
-      if (textInput.length > 1) {
-        global.alert('Your search must have only 1 (one) character');
-      } else {
-        dispatch(setFoods(foodsByLetter.meals));
+    if (pathname === '/drinks') {
+      try {
+        const drinksI = await getDrinksByIngredients(textInput);
+        dispatch(setDrinks(drinksI.drinks));
+      } catch {
+        global.alert(ERROR);
       }
     }
   };
+
+  const getByName = async () => {
+    if (pathname === '/foods') {
+      const foodsI = await getFoodsByName(textInput);
+      if (foodsI.meals === null) {
+        global.alert(ERROR);
+      }
+      dispatch(setFoods(foodsI.meals));
+    }
+    if (pathname === '/drinks') {
+      const drinksI = await getDrinksByName(textInput);
+      if (drinksI.drinks === null) {
+        global.alert(ERROR);
+      }
+      dispatch(setDrinks(drinksI.drinks));
+    }
+  };
+
+  const getByFirstLetter = async () => {
+    if (pathname === '/foods') {
+      const foodsI = await getFoodsByFirstLetter(textInput);
+      if (foodsI.meals === null) {
+        global.alert(ERROR);
+      }
+      dispatch(setFoods(foodsI.meals));
+    }
+    if (pathname === '/drinks') {
+      const drinksI = await getDrinksByFirstLetter(textInput);
+      if (drinksI.drinks === null) {
+        global.alert(ERROR);
+      }
+      dispatch(setDrinks(drinksI.drinks));
+    }
+  };
+
+  const handleClick = async () => {
+    if (radio === 'Ingredients') {
+      getByIngredients();
+    }
+    if (radio === 'Name') {
+      getByName();
+    }
+    if (radio === 'First Letter') {
+      if (textInput.length === 1) {
+        getByFirstLetter();
+      } else {
+        global.alert('Your search must have only 1 (one) character');
+      }
+    }
+  };
+
   return (
     <form>
       <label htmlFor="search-input">

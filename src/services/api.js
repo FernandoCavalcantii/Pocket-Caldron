@@ -62,21 +62,21 @@ export const getFoodsByFirstLetter = async (letter) => {
 };
 
 export const getDrinksByIngredients = async (ingredient) => {
-  const URL = `www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  const URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
   const res = await fetch(URL);
   const data = await res.json();
   return data;
 };
 
 export const getDrinksByName = async (name) => {
-  const URL = `www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
+  const URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
   const res = await fetch(URL);
   const data = await res.json();
   return data;
 };
 
 export const getDrinksByFirstLetter = async (letter) => {
-  const URL = `www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`;
+  const URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`;
   const res = await fetch(URL);
   const data = await res.json();
   return data;

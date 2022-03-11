@@ -12,10 +12,13 @@ const Header = ({ pageName, searchEnable }) => {
   const searchBtn = (
     <button
       onClick={ () => setInputStatus(!inputStatus) }
-      data-testid="search-top-btn"
       type="button"
     >
-      <img src={ searchIcon } alt="search-icon" />
+      <img
+        data-testid="search-top-btn"
+        src={ searchIcon }
+        alt="search-icon"
+      />
       ;
     </button>
   );
@@ -24,10 +27,13 @@ const Header = ({ pageName, searchEnable }) => {
       <div>
         <button
           onClick={ () => history.push('/profile') }
-          data-testid="profile-top-btn"
           type="button"
         >
-          <img src={ profileIcon } alt="profile-icon" />
+          <img
+            src={ profileIcon }
+            data-testid="profile-top-btn"
+            alt="profile-icon"
+          />
         </button>
         <h1 data-testid="page-title">
           { pageName }
