@@ -5,15 +5,49 @@ import Login from './pages/Login';
 import Foods from './pages/Foods';
 import Drinks from './pages/Drinks';
 import Profile from './pages/Profile';
+import FoodDetails from './pages/FoodDetails';
+import DrinkDetails from './pages/DrinkDetails';
+import RecipeInProgress from './pages/RecipeInProgress';
+import DoneRecipes from './pages/DoneRecipes';
+import Explore from './pages/Explore';
+import ExploreFoods from './pages/ExploreFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
+import ExploreIngredients from './pages/ExploreIngredients';
+import FavoritesRecipes from './pages/FavoritesRecipes';
+import ExploreFoodsNationalities from './pages/ExploreFoodsNationalities';
 
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={ Login } />
     <Route exact path="/foods" component={ Foods } />
     <Route exact path="/drinks" component={ Drinks } />
+    <Route exact path="/foods/:id" component={ FoodDetails } />
+    <Route exact path="/drinks/:id" component={ DrinkDetails } />
+    <Route exact path="/foods:id" component={ Foods } />
+    <Route exact path="/drinks:id" component={ Drinks } />
+    <Route exact path="/foods/:id/in-progress" component={ RecipeInProgress } />
+    <Route exact path="/drinks/:id/in-progress" component={ RecipeInProgress } />
+    <Route exact path="/explore" component={ Explore } />
+    <Route exact path="/explore/foods" component={ ExploreFoods } />
+    <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+    <Route
+      exact
+      path="/explore/foods/ingredients"
+      component={ ExploreIngredients }
+    />
+    <Route
+      exact
+      path="/explore/drinks/ingredients"
+      component={ ExploreIngredients }
+    />
+    <Route
+      exact
+      path="/explore/foods/nationalities"
+      component={ ExploreFoodsNationalities }
+    />
     <Route exact path="/profile" component={ Profile } />
-    {/* <Route exact path="/foods:id" component={ Foods } />
-    <Route exact path="/drinks:id" component={ Drinks } /> */}
+    <Route exact path="/done-recipes" component={ DoneRecipes } />
+    <Route exact path="/favorite-recipes" component={ FavoritesRecipes } />
   </Switch>
 );
 

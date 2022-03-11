@@ -1,0 +1,21 @@
+.recomendationsContainer {
+  overflow: hidden;
+  width: 350px;
+}
+
+.recommendationHolder {
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+}
+
+.recommendationHolder li {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.recommendationHolder li img {
+  height: 150px;
+  width: 150px;
+}
