@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 // após páginas concluidas, apagar import mock linha 2
 
 const DoneRecipes = () => {
-  // const { doneRecipes } = JSON.parse(localStorage.getItem('doneRecipes')).doneRecipes;
+  // const { doneRecipes } = JSON.parse(localStorage.getItem('doneRecipes'));
   const [renderDoneRecipes, setRenderDoneRecipes] = useState([]);
   const getMock = () => {
     const mock = doneRecipesMock();
