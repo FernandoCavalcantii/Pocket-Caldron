@@ -1,41 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import CategoriesFilter from '../../components/CategoriesFilter';
 import RecipeCard from '../../components/RecipeCard';
+import Footer from '../../components/Footer';
 import { getFoodsCategories, getFoodsRecipes,
   getFoodsByCategory } from '../../services/api';
 
 import style from './style.module.css';
 import Header from '../../components/Header';
+import setFoods from '../../Redux/actions/foodsActions';
 
 const Foods = () => {
-  const [foods, setFoods] = useState([]);
+  const history = useHistory();
+  const foods = useSelector((state) => state.foodsReducer.foods);
+  const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  const fetchFoods = async () => {
-    const res = await getFoodsRecipes();
-    setFoods(res.meals);
-  };
+  const fetchFoods = useCallback(
+    async () => {
+      const res = await getFoodsRecipes();
+      dispatch(setFoods(res.meals));
+    }, [dispatch],
+  );
 
   const setCategory = async (category) => {
     if (category === 'all' || selectedCategory === category) {
       fetchFoods();
     } else {
       const res = await getFoodsByCategory(category);
-      setFoods(res.meals);
+      dispatch(setFoods(res.meals));
       setSelectedCategory(category);
     }
   };
 
-  useEffect(() => {
-    fetchFoods();
-    getFoodsCategories();
-  }, []);
+  const historyPush = () => {
+    const copy = [...foods];
+    const id = copy[0].idMeal;
+    history.push(`/foods/${id}`);
+  };
 
+  useEffect(() => {
+    getFoodsCategories();
+    fetchFoods();
+  }, [fetchFoods]);
   return (
     <>
       <Header searchEnable pageName="Foods" />
       <CategoriesFilter setCategory={ setCategory } />
       <section className={ style.recipesContainer }>
+        { foods && foods.length === 1 && historyPush() }
         {foods?.map((food, index) => {
           if (index < Number('12')) {
             return (
@@ -51,6 +65,7 @@ const Foods = () => {
           return false;
         })}
       </section>
+      <Footer />
     </>
   );
 };

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
 export default function Profile() {
   const [email, setEmail] = useState('');
   useEffect(() => {
     const userEmail = JSON.parse(localStorage.getItem('user'));
-    setEmail(userEmail?.email);
+    setEmail(userEmail);
   }, []);
 
   return (
@@ -36,6 +37,7 @@ export default function Profile() {
           </button>
         </Link>
       </div>
+      <Footer />
     </>
   );
 }
