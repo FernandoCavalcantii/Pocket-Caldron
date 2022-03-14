@@ -114,3 +114,17 @@ export const getIngredientsImage = (apiName, ingredient) => {
   const URL = `https://www.${apiName}.com/images/ingredients/${ingredient}-Small.png`;
   return URL;
 };
+
+export const getNationalitiesLsit = async () => {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+  const res = await fetch(URL);
+  const list = await res.json();
+  return list;
+};
+
+export const getFoodsByNation = async (nation) => {
+  const URL = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${nation}`;
+  const res = await fetch(URL);
+  const foods = await res.json();
+  return foods;
+};

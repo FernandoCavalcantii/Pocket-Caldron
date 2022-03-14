@@ -49,6 +49,7 @@ const Routes = () => (
     <Route exact path="/profile" component={ Profile } />
     <Route exact path="/done-recipes" component={ DoneRecipes } />
     <Route exact path="/favorite-recipes" component={ FavoritesRecipes } />
+    <Route exact path="*" render={ () => <h1>Not Found</h1> } />
   </Switch>
 );
 
