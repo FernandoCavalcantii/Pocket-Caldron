@@ -2,19 +2,27 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.css';
 import shareIcon from '../../images/shareIcon.svg';
+import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
 const FoodCard = (props) => {
-  const { name, image, index, category, doneDate, tags, nationality, id } = props;
+  const { name, image, index, category, nationality, id } = props;
   const [copied, setCopied] = useState(false);
-  const handleClick = () => {
+  const handleShareClick = () => {
     navigator.clipboard.writeText(`http://localhost:3000/foods/${id}`);
     // Linha 12 colocada apenas para passar no teste, apagar após as paginas serem adicionadas
     navigator.clipboard.writeText('http://localhost:3000/foods/52771');
     setCopied(true);
   };
+  const handleDesfavoriteClick = ({ target }) => {
+    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const card = target.parentNode.parentNode;
+    card.remove();
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes
+      .filter((recipe) => recipe.id !== id)));
+  };
   return (
-    <div>
-      <div className={ style.doneRecipeCard }>
+    <>
+      <div className={ style.favoriteRecipeCard }>
         <a href={ `http://localhost:3000/foods/${id}` }>
           <img
             src={ image }
@@ -30,27 +38,27 @@ const FoodCard = (props) => {
         >
           {`${nationality} - ${category}`}
         </p>
-        <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
-        {tags.map((tag) => (
-          <span
-            key={ `${name} ${tag}` }
-            data-testid={ `${index}-${tag}-horizontal-tag` }
-          >
-            {`#${tag} `}
-          </span>
-        ))}
       </div>
-      <br />
-      <input
-        id={ `${index}-share-btn` }
-        type="image"
-        src={ shareIcon }
-        alt="Share-btn"
-        data-testid={ `${index}-horizontal-share-btn` }
-        onClick={ handleClick }
-      />
+      <div className={ style.inputs }>
+        <input
+          id={ `${index}-share-btn` }
+          type="image"
+          src={ shareIcon }
+          alt="Share-btn"
+          data-testid={ `${index}-horizontal-share-btn` }
+          onClick={ handleShareClick }
+        />
+        <input
+          id={ `${index}-favorite-btn` }
+          type="image"
+          src={ blackHeartIcon }
+          alt="Favorite-btn"
+          data-testid={ `${index}-horizontal-favorite-btn` }
+          onClick={ handleDesfavoriteClick }
+        />
+      </div>
       {copied ? <p>Link copied!</p> : ''}
-    </div>
+    </>
   );
 };
 
@@ -61,8 +69,6 @@ FoodCard.propTypes = {
   index: PropTypes.number,
   nationality: PropTypes.string,
   category: PropTypes.string,
-  doneDate: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
 }.isRequired;
 
 export default FoodCard;
