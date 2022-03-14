@@ -95,3 +95,22 @@ export const getDrinkById = async (id) => {
   const drink = await res.json();
   return drink;
 };
+
+export const getRandomRecipe = async (apiName) => {
+  const URL = `https://www.${apiName}.com/api/json/v1/1/random.php`;
+  const res = await fetch(URL);
+  const recipe = await res.json();
+  return recipe;
+};
+
+export const getIngredientsName = async (apiName) => {
+  const URL = `https://www.${apiName}.com/api/json/v1/1/list.php?i=list`;
+  const res = await fetch(URL);
+  const recipe = await res.json();
+  return recipe;
+};
+
+export const getIngredientsImage = (apiName, ingredient) => {
+  const URL = `https://www.${apiName}.com/images/ingredients/${ingredient}-Small.png`;
+  return URL;
+};
