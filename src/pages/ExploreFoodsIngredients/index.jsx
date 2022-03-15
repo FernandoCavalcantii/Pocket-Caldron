@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -15,16 +15,18 @@ const ExploreIngredients = () => {
     });
   };
 
-  const getIngredients = async () => {
-    const response = await getIngredientsName('themealdb');
-    const newArr = response.meals.slice(0, Number('12'));
-    setIngredientsName(newArr);
-    getImages(newArr);
-  };
+  const getIngredients = useCallback(
+    async () => {
+      const response = await getIngredientsName('themealdb');
+      const newArr = response.meals.slice(0, Number('12'));
+      setIngredientsName(newArr);
+      getImages(newArr);
+    }, [],
+  );
 
   useEffect(() => {
     getIngredients();
-  }, []);
+  }, [getIngredients]);
 
   return (
     <div>
