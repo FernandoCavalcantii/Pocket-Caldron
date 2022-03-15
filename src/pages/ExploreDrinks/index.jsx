@@ -19,7 +19,7 @@ const ExploreDrinks = () => {
 
   return (
     <div>
-      <Header pageName="Explore Foods" />
+      <Header pageName="Explore Drinks" />
       <div className="container">
         <button
           type="button"
