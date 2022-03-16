@@ -11,7 +11,6 @@ import getIngredientsAndMeasures, {
   toggleFavoriteRecipe } from '../../helpers';
 
 import Carousel from '../../components/Carousel';
-import Footer from '../../components/Footer';
 
 const Details = () => {
   const { pathname } = useLocation();
@@ -150,7 +149,6 @@ const Details = () => {
             </button>
           )}
         </main>
-        <Footer />
       </section>
     ))
   );

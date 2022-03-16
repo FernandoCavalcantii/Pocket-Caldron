@@ -8,8 +8,6 @@ const FoodCard = (props) => {
   const [copied, setCopied] = useState(false);
   const handleClick = () => {
     navigator.clipboard.writeText(`http://localhost:3000/foods/${id}`);
-    // Linha 12 colocada apenas para passar no teste, apagar após as paginas serem adicionadas
-    navigator.clipboard.writeText('http://localhost:3000/foods/52771');
     setCopied(true);
   };
   return (

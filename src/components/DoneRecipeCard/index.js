@@ -10,7 +10,7 @@ const DoneRecipeCard = (props) => {
   return (
     <div>
       {
-        type === 'comida' ? <FoodCard
+        type === 'food' ? <FoodCard
           id={ id }
           name={ name }
           image={ image }

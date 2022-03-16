@@ -1,40 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import doneRecipesMock from './doneRecipesMock';
 import DoneRecipeCard from '../../components/DoneRecipeCard';
 import style from './style.module.css';
 import Header from '../../components/Header';
-// após páginas concluidas, apagar import mock linha 2
 
 const DoneRecipes = () => {
-  // const { doneRecipes } = JSON.parse(localStorage.getItem('doneRecipes')).doneRecipes;
+  const allFoods = JSON.parse(localStorage.getItem('doneRecipes'));
   const [doneRecipes, setDoneRecipes] = useState([]);
-  const getMock = () => {
-    const mock = doneRecipesMock();
-    setDoneRecipes(mock);
-  };
   useEffect(
     () => {
-      getMock();
+      setDoneRecipes(JSON.parse(localStorage.getItem('doneRecipes')));
     }, [],
   );
-  // doneRecipes correto, linha 8. Após as páginas anteriores estarem concluidas, apagar linha 10 até 18
+
   const handleClick = ({ target }) => {
-    const mock = doneRecipesMock();
+    console.log(target.innerText);
     switch (target.innerText) {
     case 'All':
-      // Apagar linha 25, correta é a 26
-      setDoneRecipes(mock);
-      // setDoneRecipes(doneRecipes);
+      setDoneRecipes(allFoods);
       break;
     case 'Food':
-      // Apagar linha 30, correta é a 31
-      setDoneRecipes(mock.filter((recipe) => recipe.type === 'comida'));
-      // setDoneRecipes(doneRecipes.filter((recipe) => recipe.type === 'comida'));
+      setDoneRecipes(allFoods.filter((recipe) => recipe.type === 'food'));
       break;
     default:
-      // Apagar linha 35, correta é a 36
-      setDoneRecipes(mock.filter((recipe) => recipe.type === 'bebida'));
-      // setDoneRecipes(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
+      setDoneRecipes(allFoods.filter((recipe) => recipe.type === 'drink'));
     }
   };
   return (
