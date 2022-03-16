@@ -5,10 +5,10 @@ import { Link, useLocation } from 'react-router-dom';
 import style from './style.module.css';
 
 function RecipeCard(props) {
-  const { name, thumb, testIdIndex, recipeId } = props;
+  const { name, thumb, testIdIndex, recipeId, locale } = props;
   const location = useLocation();
   return (
-    <Link to={ `${location.pathname}/${recipeId}` }>
+    <Link to={ locale ? `/foods/${recipeId}` : `${location.pathname}/${recipeId}` }>
       <div
         className={ style.recipeCard }
         data-testid={ `${testIdIndex}-recipe-card` }

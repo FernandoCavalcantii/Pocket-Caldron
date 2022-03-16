@@ -38,8 +38,9 @@ const FoodCard = (props) => {
           </span>
         ))}
       </div>
+      <br />
       <input
-        id={ index }
+        id={ `${index}-share-btn` }
         type="image"
         src={ shareIcon }
         alt="Share-btn"

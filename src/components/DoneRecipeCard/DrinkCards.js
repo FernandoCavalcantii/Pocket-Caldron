@@ -31,6 +31,7 @@ const DrinkCard = (props) => {
         <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
       </div>
       <input
+        id={ `${index}-share-btn` }
         type="image"
         src={ shareIcon }
         alt="Share-btn"

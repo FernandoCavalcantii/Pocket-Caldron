@@ -1,0 +1,23 @@
+.favoriteRecipeCard {
+  background-color: tomato;
+  width: 100px;
+}
+
+.favoriteRecipeCard img {
+  width: 100%;
+}
+
+.favoriteRecipeCard button {
+  width: 100%;
+}
+
+.favoriteRecipeCard a {
+  color: black;
+  text-decoration: none;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
