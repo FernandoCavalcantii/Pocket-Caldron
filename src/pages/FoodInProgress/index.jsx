@@ -7,6 +7,8 @@ import shareIcon from '../../images/shareIcon.svg';
 import whiteIcon from '../../images/whiteHeartIcon.svg';
 import blackIcon from '../../images/blackHeartIcon.svg';
 
+import style from './style.module.scss';
+
 const FoodInProgress = () => {
   const history = useHistory();
   const { pathname } = useLocation();
@@ -143,13 +145,13 @@ const FoodInProgress = () => {
 
   return (
     recipe?.map((food) => (
-      <section key={ food.idMeal }>
+      <section className={ style.container } key={ food.idMeal }>
         <img
           src={ food.strMealThumb }
           alt={ food.strMealThumb }
           data-testid="recipe-photo"
         />
-        <div className="recipeHeader">
+        <div className={ style.recipeHeader }>
           <aside>
             <h1 data-testid="recipe-title">{food.strMeal}</h1>
             <span data-testid="recipe-category">{food.strCategory}</span>
@@ -224,7 +226,7 @@ const FoodInProgress = () => {
           <iframe
             data-testid="video"
             title={ food.strMeal }
-            src={ food.strYoutube }
+            src={ 'https://www.youtube.com/embed/'.concat(food.strYoutube.split('=')[1]) }
             frameBorder="0"
           />
           <button

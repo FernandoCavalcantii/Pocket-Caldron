@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DoneRecipeCard from '../../components/DoneRecipeCard';
-import style from './style.module.css';
+import style from './style.module.scss';
 import Header from '../../components/Header';
 
 const DoneRecipes = () => {
@@ -28,27 +28,29 @@ const DoneRecipes = () => {
   return (
     <>
       <Header pageName="Done Recipes" />
-      <button
-        data-testid="filter-by-all-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        All
-      </button>
-      <button
-        data-testid="filter-by-food-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        Food
-      </button>
-      <button
-        data-testid="filter-by-drink-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        Drinks
-      </button>
+      <nav className={ style.buttons }>
+        <button
+          data-testid="filter-by-all-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          All
+        </button>
+        <button
+          data-testid="filter-by-food-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          Food
+        </button>
+        <button
+          data-testid="filter-by-drink-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          Drinks
+        </button>
+      </nav>
       <section className={ style.doneRecipesContainer }>
         {doneRecipes?.map((recipe, index) => (
           <DoneRecipeCard

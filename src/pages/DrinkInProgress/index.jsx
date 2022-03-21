@@ -7,6 +7,8 @@ import shareIcon from '../../images/shareIcon.svg';
 import whiteIcon from '../../images/whiteHeartIcon.svg';
 import blackIcon from '../../images/blackHeartIcon.svg';
 
+import style from './style.module.scss';
+
 const DrinkInProgress = () => {
   const history = useHistory();
   const { pathname } = useLocation();
@@ -144,13 +146,13 @@ const DrinkInProgress = () => {
 
   return (
     recipe?.map((drink) => (
-      <section key={ drink.idDrink }>
+      <section className={ style.container } key={ drink.idDrink }>
         <img
           src={ drink.strDrinkThumb }
           alt={ drink.strDrinkThumb }
           data-testid="recipe-photo"
         />
-        <div className="recipeHeader">
+        <div className={ style.recipeHeader }>
           <aside>
             <h1 data-testid="recipe-title">{drink.strDrink}</h1>
             <span data-testid="recipe-category">{drink.strAlcoholic}</span>

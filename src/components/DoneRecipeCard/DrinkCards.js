@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import style from './style.module.css';
+import style from './style.module.scss';
 import shareIcon from '../../images/shareIcon.svg';
 
 const DrinkCard = (props) => {
@@ -11,7 +11,7 @@ const DrinkCard = (props) => {
     setCopied(true);
   };
   return (
-    <div>
+    <div className={ style.container }>
       <div className={ style.doneRecipeCard }>
         <a href={ `http://localhost:3000/drinks/${id}` }>
           <img
@@ -28,7 +28,11 @@ const DrinkCard = (props) => {
         >
           {alcoholicOrNot}
         </p>
-        <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
+        <p data-testid={ `${index}-horizontal-done-date` }>
+          {new Intl.DateTimeFormat('pt-br').format(
+            new Date(doneDate),
+          )}
+        </p>
       </div>
       <input
         id={ `${index}-share-btn` }

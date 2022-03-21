@@ -22,11 +22,7 @@ const ExploreDrinks = () => {
   return (
     <div>
       <Header pageName="Explore Drinks" />
-<<<<<<< HEAD
-      <div className="container">
-=======
       <div className={ style.container }>
->>>>>>> 0c055d8e (tá com saude)
         <button
           type="button"
           data-testid="explore-by-ingredient"

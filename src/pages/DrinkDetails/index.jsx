@@ -11,11 +11,8 @@ import getIngredientsAndMeasures, {
   toggleFavoriteRecipe } from '../../helpers';
 
 import Carousel from '../../components/Carousel';
-<<<<<<< HEAD
-=======
 
 import style from './style.module.scss';
->>>>>>> 1f375423 (tá indo)
 
 const Details = () => {
   const { pathname } = useLocation();
