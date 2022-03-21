@@ -8,24 +8,20 @@ const FavoriteRecipeCard = (props) => {
     image,
     index, category, type, alcoholicOrNot, nationality, id } = props;
   return (
-    <div>
-      {
-        type === 'food' ? <FoodCard
-          id={ id }
-          name={ name }
-          image={ image }
-          index={ index }
-          nationality={ nationality }
-          category={ category }
-        /> : <DrinkCard
-          id={ id }
-          name={ name }
-          image={ image }
-          index={ index }
-          alcoholicOrNot={ alcoholicOrNot }
-        />
-      }
-    </div>
+    type === 'food' ? <FoodCard
+      id={ id }
+      name={ name }
+      image={ image }
+      index={ index }
+      nationality={ nationality }
+      category={ category }
+    /> : <DrinkCard
+      id={ id }
+      name={ name }
+      image={ image }
+      index={ index }
+      alcoholicOrNot={ alcoholicOrNot }
+    />
   );
 };
 

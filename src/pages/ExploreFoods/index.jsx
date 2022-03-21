@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { getRandomRecipe } from '../../services/api';
 
+import style from './style.module.scss';
+
 const ExploreFoods = () => {
   const history = useHistory();
   const [surprise, setSurprise] = useState('');
@@ -20,7 +22,7 @@ const ExploreFoods = () => {
   return (
     <div>
       <Header pageName="Explore Foods" />
-      <div className="container">
+      <div className={ style.container }>
         <button
           type="button"
           data-testid="explore-by-ingredient"

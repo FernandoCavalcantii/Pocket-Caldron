@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import FavoriteRecipeCard from '../../components/FavoriteRecipeCard';
-import style from './style.module.css';
+import style from './style.module.scss';
 
 const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
@@ -29,27 +29,29 @@ const FavoritesRecipes = () => {
   return (
     <>
       <Header pageName="Favorite Recipes" />
-      <button
-        data-testid="filter-by-all-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        All
-      </button>
-      <button
-        data-testid="filter-by-food-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        Food
-      </button>
-      <button
-        data-testid="filter-by-drink-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        Drinks
-      </button>
+      <div className={ style.buttons }>
+        <button
+          data-testid="filter-by-all-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          All
+        </button>
+        <button
+          data-testid="filter-by-food-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          Food
+        </button>
+        <button
+          data-testid="filter-by-drink-btn"
+          type="button"
+          onClick={ handleClick }
+        >
+          Drinks
+        </button>
+      </div>
       <section className={ style.favoriteRecipesContainer }>
         {renderFavoriteRecipes?.map((recipe, index) => (
           <FavoriteRecipeCard

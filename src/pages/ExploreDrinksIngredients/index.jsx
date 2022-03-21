@@ -4,6 +4,8 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { getIngredientsImage, getIngredientsName } from '../../services/api';
 
+import style from './style.module.scss';
+
 const ExploreIngredients = () => {
   const [ingredientsName, setIngredientsName] = useState([]);
   const [ingredientsImages, setIngredientsImages] = useState([]);
@@ -29,28 +31,30 @@ const ExploreIngredients = () => {
   }, [getIngredients]);
 
   return (
-    <div>
+    <>
       <Header pageName="Explore Ingredients" />
-      {ingredientsName.map((name, index) => (
-        <Link
-          to="/drinks"
-          key={ Math.random() }
-          data-testid={ `${index}-ingredient-card` }
-        >
-          <img
-            data-testid={ `${index}-card-img` }
-            src={ ingredientsImages[index] }
-            alt="foto"
-          />
-          <span
-            data-testid={ `${index}-card-name` }
+      <div className={ style.container }>
+        {ingredientsName.map((name, index) => (
+          <Link
+            to="/drinks"
+            key={ Math.random() }
+            data-testid={ `${index}-ingredient-card` }
           >
-            { name.strIngredient1 }
-          </span>
-        </Link>
-      ))}
+            <img
+              data-testid={ `${index}-card-img` }
+              src={ ingredientsImages[index] }
+              alt="foto"
+            />
+            <span
+              data-testid={ `${index}-card-name` }
+            >
+              { name.strIngredient1 }
+            </span>
+          </Link>
+        ))}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

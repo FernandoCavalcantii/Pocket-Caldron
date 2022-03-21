@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import style from './style.module.css';
+import style from './style.module.scss';
 import shareIcon from '../../images/shareIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
@@ -21,7 +21,7 @@ const FoodCard = (props) => {
       .filter((recipe) => recipe.id !== id)));
   };
   return (
-    <>
+    <div className={ style.cardContainer }>
       <div className={ style.favoriteRecipeCard }>
         <a href={ `http://localhost:3000/foods/${id}` }>
           <img
@@ -58,7 +58,7 @@ const FoodCard = (props) => {
         />
       </div>
       {copied ? <p>Link copied!</p> : ''}
-    </>
+    </div>
   );
 };
 
