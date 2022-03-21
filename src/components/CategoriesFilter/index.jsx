@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getDrinksCategories, getFoodsCategories } from '../../services/api';
 
+import style from './style.module.scss';
+
 function CategoriesFilter({ setCategory }) {
   const [categories, setCategories] = useState();
   const { pathname } = useLocation();
@@ -27,7 +29,7 @@ function CategoriesFilter({ setCategory }) {
   }, [pathname]);
 
   return (
-    <div>
+    <div className={ style.container }>
       <button
         type="button"
         onClick={ () => setCategory('all') }

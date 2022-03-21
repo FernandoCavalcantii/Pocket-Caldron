@@ -11,6 +11,8 @@ import { getFoodsByName,
 import setFoods from '../../Redux/actions/foodsActions';
 import setDrinks from '../../Redux/actions/drinksActions';
 
+import style from './style.module.scss';
+
 export default function SearchInput() {
   const ERROR = 'Sorry, we haven\'t found any recipes for these filters.';
   const { pathname } = useLocation();
@@ -93,41 +95,44 @@ export default function SearchInput() {
   };
 
   return (
-    <form>
+    <form className={ style.searchContainer }>
       <label htmlFor="search-input">
         <input
           type="text"
           data-testid="search-input"
           onChange={ handleTextChange }
+          placeholder="search"
         />
       </label>
-      <label htmlFor="ingredient-search-radio">
-        Ingredients
-        <input
-          name="header-radios"
-          type="radio"
-          data-testid="ingredient-search-radio"
-          onChange={ handleRadioChange }
-        />
-      </label>
-      <label htmlFor="name-search-radio">
-        Name
-        <input
-          name="header-radios"
-          type="radio"
-          data-testid="name-search-radio"
-          onChange={ handleRadioChange }
-        />
-      </label>
-      <label htmlFor="first-letter-search-radio">
-        First Letter
-        <input
-          type="radio"
-          name="header-radios"
-          data-testid="first-letter-search-radio"
-          onChange={ handleRadioChange }
-        />
-      </label>
+      <fieldset>
+        <label htmlFor="ingredient-search-radio">
+          Ingredients
+          <input
+            name="header-radios"
+            type="radio"
+            data-testid="ingredient-search-radio"
+            onChange={ handleRadioChange }
+          />
+        </label>
+        <label htmlFor="name-search-radio">
+          Name
+          <input
+            name="header-radios"
+            type="radio"
+            data-testid="name-search-radio"
+            onChange={ handleRadioChange }
+          />
+        </label>
+        <label htmlFor="first-letter-search-radio">
+          First Letter
+          <input
+            type="radio"
+            name="header-radios"
+            data-testid="first-letter-search-radio"
+            onChange={ handleRadioChange }
+          />
+        </label>
+      </fieldset>
       <button
         type="button"
         data-testid="exec-search-btn"

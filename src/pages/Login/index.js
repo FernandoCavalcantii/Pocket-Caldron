@@ -3,6 +3,8 @@ import { Redirect } from 'react-router';
 import { useDispatch } from 'react-redux';
 import saveLogin from '../../Redux/actions/loginActions';
 
+import style from './style.module.css';
+
 const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -51,28 +53,31 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <input
-        data-testid="email-input"
-        type="email"
-        placeholder="e-mail"
-        onChange={ handleChange }
-      />
-      <input
-        data-testid="password-input"
-        type="password"
-        placeholder="senha"
-        onChange={ handleChange }
-      />
-      <button
-        data-testid="login-submit-btn"
-        type="button"
-        onClick={ handleClick }
-        disabled={ disableBtn }
-      >
-        Enter
-      </button>
-      {redirect && <Redirect to="/foods" />}
+    <div className={ style.container }>
+      <div className={ style.form }>
+        <h1>Pocket Caldron</h1>
+        <input
+          data-testid="email-input"
+          type="email"
+          placeholder="e-mail"
+          onChange={ handleChange }
+        />
+        <input
+          data-testid="password-input"
+          type="password"
+          placeholder="senha"
+          onChange={ handleChange }
+        />
+        <button
+          data-testid="login-submit-btn"
+          type="button"
+          onClick={ handleClick }
+          disabled={ disableBtn }
+        >
+          Enter
+        </button>
+        {redirect && <Redirect to="/foods" />}
+      </div>
     </div>
   );
 };

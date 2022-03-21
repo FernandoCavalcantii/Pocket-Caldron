@@ -6,7 +6,7 @@ import RecipeCard from '../../components/RecipeCard';
 import { getDrinksByCategory, getDrinksRecipes } from '../../services/api';
 import Footer from '../../components/Footer';
 
-import style from './style.module.css';
+import style from './style.module.scss';
 import Header from '../../components/Header';
 import setDrinks from '../../Redux/actions/drinksActions';
 

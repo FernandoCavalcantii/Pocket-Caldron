@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import { getFoodsCategories, getFoodsRecipes,
   getFoodsByCategory } from '../../services/api';
 
-import style from './style.module.css';
+import style from './style.module.scss';
 import Header from '../../components/Header';
 import setFoods from '../../Redux/actions/foodsActions';
 

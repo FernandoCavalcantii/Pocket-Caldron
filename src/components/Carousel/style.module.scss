@@ -5,8 +5,9 @@
 
 .recommendationHolder {
   display: flex;
-  gap: 10px;
+  gap: 25px;
   overflow-x: scroll;
+  align-items: center;
 }
 
 .recommendationHolder li {

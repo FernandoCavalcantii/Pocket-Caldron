@@ -12,6 +12,8 @@ import getIngredientsAndMeasures, {
 
 import Carousel from '../../components/Carousel';
 
+import style from './style.module.scss';
+
 const Details = () => {
   const { pathname } = useLocation();
   const history = useHistory();
@@ -49,13 +51,13 @@ const Details = () => {
 
   return (
     recipe?.map((food) => (
-      <section key={ food.idMeal }>
+      <section className={ style.container } key={ food.idMeal }>
         <img
           src={ food.strMealThumb }
           alt={ food.strMealThumb }
           data-testid="recipe-photo"
         />
-        <div className="recipeHeader">
+        <div className={ style.recipeHeader }>
           <aside>
             <h1 data-testid="recipe-title">{food.strMeal}</h1>
             <span data-testid="recipe-category">{food.strCategory}</span>
@@ -112,8 +114,8 @@ const Details = () => {
           </div>
         </div>
         <main>
-          <h3>Ingredients</h3>
           <ul>
+            <h3>Ingredients</h3>
             {IngredientsdAndMeasures.map((value, index) => (
               <li
                 key={ Math.random() }
@@ -134,7 +136,7 @@ const Details = () => {
           <iframe
             data-testid="video"
             title={ food.strMeal }
-            src={ food.strYoutube }
+            src={ 'https://www.youtube.com/embed/'.concat(food.strYoutube.split('=')[1]) }
             frameBorder="0"
           />
           <Carousel recomendation={ recomendation } drinkOrMeal="Drink" />
@@ -142,7 +144,7 @@ const Details = () => {
             <button
               type="button"
               data-testid="start-recipe-btn"
-              style={ { position: 'fixed', bottom: 0 } }
+              // style={ { position: 'fixed', bottom: 0 } }
               onClick={ () => history.push('/foods/'
                 .concat(String(food.idMeal), '/in-progress')) }
             >

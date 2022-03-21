@@ -11,6 +11,11 @@ import getIngredientsAndMeasures, {
   toggleFavoriteRecipe } from '../../helpers';
 
 import Carousel from '../../components/Carousel';
+<<<<<<< HEAD
+=======
+
+import style from './style.module.scss';
+>>>>>>> 1f375423 (tá indo)
 
 const Details = () => {
   const { pathname } = useLocation();
@@ -49,13 +54,13 @@ const Details = () => {
 
   return (
     recipe?.map((drink) => (
-      <section key={ drink.idDrink }>
+      <section className={ style.container } key={ drink.idDrink }>
         <img
           src={ drink.strDrinkThumb }
           alt={ drink.strDrinkThumb }
           data-testid="recipe-photo"
         />
-        <div className="recipeHeader">
+        <div className={ style.recipeHeader }>
           <aside>
             <h1 data-testid="recipe-title">{drink.strDrink}</h1>
             <span data-testid="recipe-category">{drink.strAlcoholic}</span>

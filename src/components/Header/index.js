@@ -5,6 +5,8 @@ import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import SearchInput from '../SearchInput';
 
+import style from './style.module.css';
+
 const Header = ({ pageName, searchEnable }) => {
   const [inputStatus, setInputStatus] = useState(false);
   const history = useHistory();
@@ -19,12 +21,11 @@ const Header = ({ pageName, searchEnable }) => {
         src={ searchIcon }
         alt="search-icon"
       />
-      ;
     </button>
   );
   return (
     <header>
-      <div>
+      <div className={ style.header }>
         <button
           onClick={ () => history.push('/profile') }
           type="button"

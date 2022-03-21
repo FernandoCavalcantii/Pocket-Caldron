@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import style from './style.module.css';
+import style from './style.module.scss';
 
 const Carousel = ({ recomendation, drinkOrMeal }) => (
   <div className={ style.recomendationsContainer }>
