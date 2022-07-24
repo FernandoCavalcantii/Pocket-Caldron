@@ -1,0 +1,13 @@
+.header {
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem;
+}
+
+.header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+

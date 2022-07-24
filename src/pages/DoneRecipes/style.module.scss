@@ -1,0 +1,28 @@
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 0.25rem;
+      box-shadow: 0 2px 2px 0 #33333340;
+      margin-top: 0.3rem;
+      transition: all 0.4s ease;
+      padding: 0.2rem;
+      
+      &:hover {
+        background-color: var(--secondary-color);
+        color: white;
+        scale: 0.9;
+      }
+    }
+}
+
+.doneRecipesContainer {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0.5rem;
+}

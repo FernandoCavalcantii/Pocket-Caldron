@@ -1,0 +1,38 @@
+.searchContainer {
+  margin-bottom: 1rem;
+
+  label:nth-child( 1 ) input {
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 10px;
+
+    label {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 5px 0;
+      gap: 5px;
+
+      input {
+        height: 15px;
+        width: 15px;
+      }
+    }
+  }
+
+  button {
+    padding: 0.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background-color: #7cfb92;
+    text-shadow: 1px 1px #33333370;
+    width: 100%;
+  }
+}
+

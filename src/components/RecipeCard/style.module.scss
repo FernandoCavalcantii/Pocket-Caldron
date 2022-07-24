@@ -1,0 +1,26 @@
+.recipeCard {
+  background-color: white;
+  width: 100%;
+  padding: 0.5rem 0.3rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  box-shadow: 0 0 10px 0 #33333350;
+  transition: all 0.2s ease;
+  
+  img {
+    width: 100%;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  span {
+    color: black;
+  }
+
+  &:hover {
+    background-color: var(--secondary-color);
+    scale: 0.96;
+  }
+}
+
+

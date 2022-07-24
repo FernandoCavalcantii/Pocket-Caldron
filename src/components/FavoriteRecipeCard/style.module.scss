@@ -1,0 +1,33 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  width: 100%;
+  box-shadow: 0 0 10px 0 #333;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--secondary-color);
+    scale: 1.05;
+  }
+}
+
+.favoriteRecipeCard {
+  img {
+    width: 100%;
+  }
+
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  input {
+    width: 25px;
+  }
+}
