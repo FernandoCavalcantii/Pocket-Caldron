@@ -28,7 +28,7 @@ const Drinks = () => {
       fetchDrinks();
     } else {
       const res = await getDrinksByCategory(category);
-      setDrinks(res.drinks);
+      dispatch(setDrinks(res.drinks));
       setSelectedCategory(category);
     }
   };
