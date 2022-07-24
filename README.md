@@ -1,3 +1,11 @@
+### Projeto de conclusão, desenvolvido pelo grupo 10 da turma 17, do módulo de Front-end do curso de desenvolvimento web da Trybe.
+
+- Link do repositório oficial: `https://github.com/tryber/sd-017-project-recipes-app`
+
+- Link do Pull Request do grupo 10: `https://github.com/tryber/sd-017-project-recipes-app/pull/1323`
+
+
+
 ### Termos de uso
 
 Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
