@@ -54,8 +54,7 @@ Projeto de conclusão do módulo de Front-end do curso de desenvolvimento web da
 
 - [Pull Request do grupo 10](https://github.com/tryber/sd-017-project-recipes-app/pull/1323)`
 
-<details>
-<summary><strong>Descrição</strong></summary><br />
+### Descrição
   
 Aplicação desenvolvida para possibilitar o usuário a ver, buscar, filtrar, favoritar e acompanhar o progresso de preparação de receitas e drinks!
 
