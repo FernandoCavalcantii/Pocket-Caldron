@@ -22,12 +22,14 @@ Database consumes 02 API endpoints:
 - [TheCocktailDB](https://www.thecocktaildb.com/api.php) for drinks.
   
 
-### Used tecnologies
+### Used tecnologies and agile methodologies
   
 - JavaScript.
 - React.
 - CSS.
 - HTML.
+- Kanban
+- Trello
  
 ### How to run the app
 
@@ -72,7 +74,7 @@ Pocket Caldron é um app de receitas, que usa React Hooks e Context API (para ge
 
 O usuário pode usar o Pocket Caldron para ver, buscar, filtrar, favoritar e acompanhar o progresso de preparação de receitas e drinks!
 
-A base de dados serão 2 APIs distintas:
+A base de dados é composta por 02 APIs distintas:
 
 - [TheMealDB](https://www.themealdb.com/api.php) para comidas.
 
@@ -87,7 +89,8 @@ A base de dados serão 2 APIs distintas:
 - React.
 - CSS.
 - HTML.
-  
+- Kanban
+- Trello
 </details>
 
 <details>
