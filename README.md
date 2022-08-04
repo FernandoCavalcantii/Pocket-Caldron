@@ -1,5 +1,5 @@
 <details>
-<summary><strong>English</strong></summary><br />
+<summary><h3>English</h3></summary><br />
 
 ### Welcome to Pocket Caldron's repository!
 
@@ -21,17 +21,19 @@ Database consumes 02 API endpoints:
 
 - [TheCocktailDB](https://www.thecocktaildb.com/api.php) for drinks.
   
-
-### Used tecnologies and agile methodologies
-  
+<details>
+<summary><strong>Used tecnologies and agile methodologies</strong></summary><br />
+   
 - JavaScript.
 - React.
 - CSS.
 - HTML.
 - Kanban
 - Trello
- 
-### How to run the app
+  </details>
+
+<details>
+<summary><strong>How to run the app</strong></summary><br /> 
 
 1. Clone the repository.
 
@@ -48,16 +50,15 @@ Database consumes 02 API endpoints:
 4. Start.
   
 - `npm start`
+  </details>
 
-
-### Considerations
+<details>
+<summary><strong>Considerations</strong></summary><br /> 
 
 <p align="justify">
-
 The project was developed in team. It was essential to adopt agile methodology to optimize the team's tasks execution. We used Kanban, in conjunction with Trello, to do the project management. We exercised and developed our communication, cooperation and organization, in a context similar to what is experiencied in the labor market, which was an very enriching experience.
-
-</p>
-
+</p> 
+</details>
 </details>
 
 ### Bem vindo(a) ao repositório do Pocket Caldron!
