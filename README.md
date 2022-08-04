@@ -64,7 +64,7 @@ Projeto de conclusão do módulo de Front-end do curso de Desenvolvimento Web Fu
 
 - [Repositório oficial](https://github.com/tryber/sd-017-project-recipes-app)
 
-- [Pull Request do grupo 10](https://github.com/tryber/sd-017-project-recipes-app/pull/1323)`
+- [Pull Request do grupo 10](https://github.com/tryber/sd-017-project-recipes-app/pull/1323)
 
 ### Descrição
 
