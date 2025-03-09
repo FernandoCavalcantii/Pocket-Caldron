@@ -22,7 +22,7 @@ Database consumes 02 API endpoints:
 - [TheCocktailDB](https://www.thecocktaildb.com/api.php) for drinks.
   
 <details>
-<summary><strong>Used tecnologies and agile methodologies</strong></summary><br />
+<summary><strong>Tecnologies and agile methodologies used</strong></summary><br />
    
 - JavaScript.
 - React.
